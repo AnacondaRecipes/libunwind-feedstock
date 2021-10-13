@@ -18,9 +18,9 @@ build:
     # https://abi-laboratory.pro/index.php?view=timeline&l=libunwind
     - {{ pin_subpackage('libunwind', max_pin='x') }}
   skip: true  # [win or osx]
-  missing_dso_whitelist:                 # [linux]
-    - "$RPATH/libc.so.6"                 # [linux]
-    - "$RPATH/libunwind-x86_64.so.8.0.1" # [linux]
+  missing_dso_whitelist:            # [linux]
+    - "*/libc.so.6"                 # [linux]
+    - "*/libunwind-x86_64.so.8.0.1" # [linux]
 
 requirements:
   host:
