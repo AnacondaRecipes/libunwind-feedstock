@@ -21,6 +21,7 @@ build:
   missing_dso_whitelist:        # [linux]
     - "*/libc.so.6"             # [linux]
     - "*/ld-linux-x86-64.so.2"  # [linux]
+    - "*/ld-linux-aarch64.so.1" # [linux]
 
 requirements:
   host:
