@@ -17,10 +17,10 @@ build:
     # breaks backwards compatibility sometimes but we trust the maintainers that they were only internal
     # https://abi-laboratory.pro/index.php?view=timeline&l=libunwind
     - {{ pin_subpackage('libunwind', max_pin='x') }}
-  skip: true  # [win or osx]
-  missing_dso_whitelist:            # [linux]
-    - "*/libc.so.6"                 # [linux]
-    - "*/libunwind-x86_64.so.8.0.1" # [linux]
+  skip: true                    # [not linux]
+  missing_dso_whitelist:        # [linux]
+    - "*/libc.so.6"             # [linux]
+    - "*/ld-linux-x86-64.so.2"  # [linux]
 
 requirements:
   host:
