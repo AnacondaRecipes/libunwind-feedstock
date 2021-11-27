@@ -1,5 +1,5 @@
 {% set name = "libunwind" %}
-{% set version = "1.5.0" %}
+{% set version = "1.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: http://download.savannah.nongnu.org/releases/libunwind/libunwind-{{ version }}.tar.gz
-  sha256: 90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017 
+  sha256: 7194c20dda841b26917c0579e6467b53f7ad2e3f9452e5c77f3c3829c4656b70 
   patches:
     - patches/lib64.patch
 
