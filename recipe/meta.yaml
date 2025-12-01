@@ -1,37 +1,35 @@
 {% set name = "libunwind" %}
-{% set version = "1.5.0" %}
+{% set version = "1.8.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: http://download.savannah.nongnu.org/releases/libunwind/libunwind-{{ version }}.tar.gz
-  sha256: 90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017 
-  patches:
-    - patches/lib64.patch
+  url: https://github.com/{{ name }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 21b26bc75cd37b548d7952f2794cde711efa6c6151c4147cc3c52cfedbf11df4 
 
 build:
-  number: 1 
+  number: 0
+  skip: true  # [not linux]
   run_exports:
     # breaks backwards compatibility sometimes but we trust the maintainers that they were only internal
     # https://abi-laboratory.pro/index.php?view=timeline&l=libunwind
     - {{ pin_subpackage('libunwind', max_pin='x') }}
-  skip: true                    # [not linux]
   missing_dso_whitelist:        # [linux]
     - "*/libc.so.6"             # [linux]
     - "*/ld-linux-x86-64.so.2"  # [linux]
     - "*/ld-linux-aarch64.so.1" # [linux]
-
+    
 requirements:
   host:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make
     - autoconf
     - automake
     - libtool
-    - patch
 
 test:
   commands:
