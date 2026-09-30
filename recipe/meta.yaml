@@ -16,11 +16,7 @@ build:
     # breaks backwards compatibility sometimes but we trust the maintainers that they were only internal
     # https://abi-laboratory.pro/index.php?view=timeline&l=libunwind
     - {{ pin_subpackage('libunwind', max_pin='x') }}
-  missing_dso_whitelist:        # [linux]
-    - "*/libc.so.6"             # [linux]
-    - "*/ld-linux-x86-64.so.2"  # [linux]
-    - "*/ld-linux-aarch64.so.1" # [linux]
-    
+
 requirements:
   build:
     - {{ stdlib('c') }}
