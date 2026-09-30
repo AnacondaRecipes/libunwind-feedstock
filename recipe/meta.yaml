@@ -10,22 +10,17 @@ source:
   sha256: 21b26bc75cd37b548d7952f2794cde711efa6c6151c4147cc3c52cfedbf11df4 
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
   run_exports:
     # breaks backwards compatibility sometimes but we trust the maintainers that they were only internal
     # https://abi-laboratory.pro/index.php?view=timeline&l=libunwind
     - {{ pin_subpackage('libunwind', max_pin='x') }}
-  missing_dso_whitelist:        # [linux]
-    - "*/libc.so.6"             # [linux]
-    - "*/ld-linux-x86-64.so.2"  # [linux]
-    - "*/ld-linux-aarch64.so.1" # [linux]
-    
+
 requirements:
-  host:
+  build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - make
     - autoconf
     - automake
@@ -39,12 +34,13 @@ test:
     - test -f "${PREFIX}/include/unwind.h"
 
 about:
-  home: http://www.nongnu.org/libunwind
+  home: https://www.nongnu.org/libunwind
   license: MIT
   license_family: MIT
   license_file: COPYING
   summary: 'Defines a portable and efficient C programming interface (API) to determine the call-chain of a program'
-  doc_url: http://www.nongnu.org/libunwind/docs.html
+  description: 'libunwind is a portable and efficient C API for determining the current call chain of ELF program threads of execution and for resuming execution at any point in that call chain. The API supports both local (same process) and remote (other process) operation.'
+  doc_url: https://www.nongnu.org/libunwind/docs.html
   dev_url: https://github.com/libunwind/libunwind
 
 extra:
