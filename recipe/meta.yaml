@@ -10,7 +10,7 @@ source:
   sha256: 21b26bc75cd37b548d7952f2794cde711efa6c6151c4147cc3c52cfedbf11df4 
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
   run_exports:
     # breaks backwards compatibility sometimes but we trust the maintainers that they were only internal
